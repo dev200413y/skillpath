@@ -1,0 +1,15 @@
+[
+    {
+        "slug": "software-engineer-google",
+        "title": "Software Engineer, Early Career",
+        "company": "Google",
+        "link": "https://careers.google.com",
+        "location": "Bangalore, India",
+        "description": "<h3>About the Role</h3><p>Google's software engineers develop the next-generation technologies...</p>",
+        "seoTitle": "Google Software Engineer Hiring 2025",
+        "keywords": "Google, Software Engineer, SDE",
+        "summary": "Join Google as a Software Engineer in Bangalore.",
+        "schema": "{\"@context\":\"https://schema.org/\",\"@type\":\"JobPosting\",\"title\":\"Software Engineer\",\"hiringOrganization\":{\"@type\":\"Organization\",\"name\":\"Google\"}}",
+        "datePosted": "2025-01-15"
+    }
+]

@@ -21,7 +21,7 @@ const MODEL_NAME = 'gemini-1.5-flash';
 
 function onOpen() {
     const ui = SpreadsheetApp.getUi();
-    ui.createMenu('JobPilot AI')
+    ui.createMenu('SkillPath AI')
         .addItem('1. Enrich Selected Row', 'enrichSelectedRow')
         .addItem('2. Sync to Website (GitHub)', 'syncToGitHub')
         .addToUi();

@@ -6,7 +6,7 @@ import Navbar from "@/components/Navbar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "JobPilot - AI Optimized Job Board",
+  title: "SkillPath - AI Optimized Job Board",
   description: "Find the best jobs with AI-enhanced descriptions and insights.",
 };
 

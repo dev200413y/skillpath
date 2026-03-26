@@ -1,5 +1,5 @@
 import { getAllJobs } from "@/lib/jobs";
-import JobCard from "@/components/JobCard";
+import JobsGrid from "@/components/JobsGrid";
 
 export default async function Home() {
   const jobs = await getAllJobs();
@@ -13,13 +13,12 @@ export default async function Home() {
         <p className="mx-auto max-w-2xl text-lg text-[var(--text-secondary)]">
           AI-curated job listings with enhanced descriptions and insights to help you land your next role.
         </p>
+        <p className="mx-auto mt-3 max-w-xl text-sm text-[var(--text-muted)]">
+          Select multiple jobs and use the <strong className="text-white">Auto Apply Agent</strong> to apply to all of them at once.
+        </p>
       </section>
 
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {jobs.map((job) => (
-          <JobCard key={job.slug} job={job} />
-        ))}
-      </div>
+      <JobsGrid jobs={jobs} />
     </div>
   );
 }

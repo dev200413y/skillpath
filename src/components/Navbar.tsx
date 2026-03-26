@@ -24,6 +24,9 @@ export default function Navbar() {
                     <Link href="#" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
                         Resources
                     </Link>
+                    <Link href="/applications" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
+                        My Applications
+                    </Link>
                 </div>
 
                 <button className="rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white hover:bg-white/20 transition-all">

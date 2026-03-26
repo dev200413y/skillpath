@@ -1,6 +1,7 @@
 import Link from 'next/link';
-import { MapPin, Calendar, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { MapPin, Calendar, ArrowRight, CheckCircle2, Mail, Phone, Building2 } from 'lucide-react';
 import { Job } from '@/types/job';
+import { typeColors, orgTypeColors } from '@/lib/jobConstants';
 
 interface JobCardProps {
     job: Job;
@@ -44,7 +45,22 @@ export default function JobCard({ job, isSelected, onSelect }: JobCardProps) {
                         </div>
                     </div>
 
-                    <div className="mt-6 flex flex-wrap gap-4 text-sm text-[var(--text-muted)]">
+                    {/* Type & OrgType badges */}
+                    <div className="mt-3 flex flex-wrap gap-2">
+                        {job.type?.map((t, i) => (
+                            <span key={i} className={`rounded-full border px-2.5 py-0.5 text-xs font-medium ${typeColors[t] ?? 'bg-white/10 text-gray-300 border-white/20'}`}>
+                                {t}
+                            </span>
+                        ))}
+                        {job.orgType && (
+                            <span className={`inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-xs font-medium ${orgTypeColors[job.orgType] ?? 'bg-white/10 text-gray-300 border-white/20'}`}>
+                                <Building2 className="h-3 w-3" />
+                                {job.orgType}
+                            </span>
+                        )}
+                    </div>
+
+                    <div className="mt-4 flex flex-wrap gap-4 text-sm text-[var(--text-muted)]">
                         <div className="flex items-center gap-1.5">
                             <MapPin className="h-4 w-4" />
                             {job.location}
@@ -52,10 +68,29 @@ export default function JobCard({ job, isSelected, onSelect }: JobCardProps) {
                         {job.datePosted && (
                             <div className="flex items-center gap-1.5">
                                 <Calendar className="h-4 w-4" />
-                                {job.datePosted}
+                                {new Date(job.datePosted).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}
                             </div>
                         )}
                     </div>
+
+                    {/* HR Contact */}
+                    {(job.hrEmail || job.hrPhone) && (
+                        <div className="mt-4 rounded-lg border border-[var(--glass-border)] bg-white/3 px-4 py-3 space-y-1.5">
+                            <p className="text-xs font-semibold uppercase tracking-wider text-[var(--text-muted)]">HR Contact</p>
+                            {job.hrEmail && (
+                                <div className="flex items-center gap-2 text-sm text-green-400">
+                                    <Mail className="h-3.5 w-3.5 flex-shrink-0" />
+                                    <span className="truncate">{job.hrEmail}</span>
+                                </div>
+                            )}
+                            {job.hrPhone && (
+                                <div className="flex items-center gap-2 text-sm text-blue-400">
+                                    <Phone className="h-3.5 w-3.5 flex-shrink-0" />
+                                    <span>{job.hrPhone}</span>
+                                </div>
+                            )}
+                        </div>
+                    )}
 
                     <div className="mt-4 flex flex-wrap gap-2">
                         {job.keywords.split(',').slice(0, 3).map((keyword, i) => (
